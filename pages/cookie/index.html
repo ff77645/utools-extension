@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie 管理</title>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div class="header">Cookie 列表:</div>
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>域名</th>
+          <th>名称</th>
+          <th>值</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="cookie-tbody">
+        <tr>
+          <td>127.0.0.1</td>
+          <td>name</td>
+          <td>value</td>
+          <td>
+            <button class="button">删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="header">
+    <span>域名过滤:</span>
+    <div class="">
+      <div class="input-box" id="input-box">
+        <input id="input-site" type="text" placeholder="请输入域名">
+        <button id="add-site-confirm">确认</button>
+        <button id="add-site-cancle">取消</button>
+      </div>
+      <button class="add-site-btn" id="add-site">添加</button>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>域名</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="site-tbody"></tbody>
+    </table>
+  </div>
+  <script src="/js/jquery.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

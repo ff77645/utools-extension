@@ -1,0 +1,24 @@
+body,html{
+  background-color: transparent;
+}
+.app{
+  --size:60px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(3,var(--size));
+  gap: 12px;
+  background: #40407a;
+  width:calc(var(--size)*3 + 48px);
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.function{
+  background-color: #706fd3;
+  border-radius: 6px;
+  text-align: center;
+  height: var(--size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

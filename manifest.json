@@ -1,0 +1,31 @@
+{
+  "name": "utools",
+  "version": "1.0",
+  "description": "Uses the Action API to change the badge text, icon, hover text, or popup page.",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "utools",
+    "default_popup": "popups/default.html",
+    "default_icon": {
+      "32": "icons/32.png",
+      "72": "icons/72.png",
+      "128": "icons/128.png",
+      "512": "icons/512.png"
+    }
+  },
+  "icons": {
+    "32": "icons/32.png",
+    "72": "icons/72.png",
+    "128": "icons/128.png",
+    "512": "icons/512.png"
+  },
+  "permissions":[
+    "tabs",
+    "storage",
+    "cookies"
+  ],
+  "host_permissions": ["<all_urls>"]
+}
