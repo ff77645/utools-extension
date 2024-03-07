@@ -1,0 +1,19 @@
+body,html{
+  background-color: #f5f6fa;
+}
+.app{
+  width: 150px;
+}
+li{
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+li:hover{
+  background-color: #dcdde1;
+}

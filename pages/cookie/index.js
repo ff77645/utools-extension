@@ -7,7 +7,7 @@ let urls = []
 chrome.storage.sync.get(storageKey,res=>{
   console.log({res});
   urls = res[storageKey] || []
-  renderingTable()
+  renderTable()
 })
 
 function syncUrls(){
@@ -26,19 +26,19 @@ siteTable.bind('click',handleClickSiteTable)
 
 
 // 获取所有标签页
-async function renderingTable(){
+async function renderTable(){
   const tabs = await chrome.tabs.query({url:urls});
   const cookieGroup = await Promise.all(tabs.map(item=>chrome.cookies.getAll({url:item.url})))
   const _allCookies = cookieGroup.reduce((pre,next)=>{
     return pre.concat(next)
   },[])
   allCookies = _allCookies
-  renderingCookies(_allCookies)
-  renderingSite()
+  renderCookies(_allCookies)
+  renderSite()
 }
 
 
-function renderingCookies(cookies){
+function renderCookies(cookies){
   const els = cookies.map(item=>{
     return `
       <tr>
@@ -76,7 +76,7 @@ async function handleUse(e){
 }
 
 
-function renderingSite(){
+function renderSite(){
   const els = urls.map((url,index)=>`
     <tr>
       <td>${url}</td>
@@ -97,7 +97,7 @@ async function handleClickSiteTable(e){
   if(action === 'remove'){
     urls.splice(index,1)
     await syncUrls()
-    renderingTable()
+    renderTable()
   }else{
     handleEditSite(index)
   }
@@ -115,7 +115,7 @@ async function handleEditSite(index){
   }
   urls[index] = newVla
   await syncUrls()
-  renderingTable()
+  renderTable()
 }
 
 const addSiteBtn = $('#add-site')
@@ -151,5 +151,5 @@ async function handleAddSite(){
   inputBox.hide()
   inputSite.val('')
   await syncUrls()
-  renderingTable()
+  renderTable()
 }
