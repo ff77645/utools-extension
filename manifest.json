@@ -25,7 +25,10 @@
   "permissions":[
     "tabs",
     "storage",
-    "cookies"
+    "cookies",
+    "sidePanel",
+    "scripting",
+    "activeTab"
   ],
   "host_permissions": ["<all_urls>"]
 }
