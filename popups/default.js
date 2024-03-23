@@ -3,6 +3,7 @@
 const dataList = [
   {name:'Cookie 代理',id:'cookie'},
   {name:'操作引导',id:'tour'},
+  {name:'保存图片',id:'saveImage'},
 ]
 
 renderPage()
@@ -23,11 +24,33 @@ function renderPage(){
 
 async function handleClick(item){
   if(item.id === 'tour') return showTourSidePanel()
+  if(item.id === 'saveImage') return handleSaveImage()
   const width = 600
   const screenWidth = window.screen.width
   const left = Math.floor((screenWidth - width) / 2)
   window.open(`/pages/${item.id}/index.html`,item.name,`height=600,width=600,top=200,left=${left},toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no`)
 }
+
+const SAVE_IMAGE_ID = 'SAVE_IMAGE_ID'
+async function handleSaveImage(){
+  const tabs = await chrome.tabs.query({active:true,currentWindow:true})
+  const currentTab = tabs[0]
+  const url = new URL(currentTab.url)
+  const _url = url.origin +'/*'
+
+  console.log({currentTab,_url});
+  const tabId = currentTab.id
+  await chrome.scripting.executeScript(
+    {
+      files:['/contentscript/saveImage.js'],
+      target:{
+        tabId
+      }
+    }
+  )
+}
+
+
 const TOUR_CONTENT_ID = 'TOUR_CONTENT_ID'
 async function showTourSidePanel(){
   const tabs = await chrome.tabs.query({active:true,currentWindow:true})
