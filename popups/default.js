@@ -48,6 +48,9 @@ async function handleSaveImage(){
       }
     }
   )
+
+  // await chrome.action.setPopup({})
+  
 }
 
 

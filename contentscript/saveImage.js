@@ -6,17 +6,17 @@ init()
 
 function init(){
   renderToolbar()
-  document.body.addEventListener('click', handleClick)
+  document.body.addEventListener('click', handleClick,true)
 
 }
 
-var whiteClassList = ['utool-s-img','utool-imgbox','selected-btn']
+var whiteClassList = ['utool-s-img','utool-imgbox','utools-btn']
 
 function handleClick(e){
   const target = e.target
+  console.log({target})
   if(whiteClassList.includes(target.className)) return
   e.stopPropagation()
-  console.log(target)
   const img = getImage(target)
   if(!img) return
   const url = img.src
@@ -35,12 +35,12 @@ function getImage(el){
 }
 
 function hideSelectedImg(){
-  const el = document.querySelector('utool-imgbox')
+  const el = document.querySelector('.utool-imgbox')
   if(el) el.remove()
 }
 function showSelectedImg(e){
   e.stopPropagation()
-  const el = document.querySelector('utool-imgbox')
+  const el = document.querySelector('.utool-imgbox')
   console.log({el});
   if(el) return el.remove()
   const imageBox = document.createElement('div')
@@ -67,7 +67,7 @@ function showSelectedImg(e){
     top: 0;
     z-index: 1000;
     height: 100vh;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.8);
     padding: 15px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -87,7 +87,7 @@ function renderToolbar(){
   const confirmBtn = document.createElement('div')
   const cancelBtn = document.createElement('div')
   const selected = document.createElement('div')
-  selected.className = 'selected-btn'
+  confirmBtn.className = cancelBtn.className = selected.className = 'utools-btn'
   selected.innerHTML = `已选择：${selectedImg.length}`
 
   selected.style = `margin-left: 10px;color:#eee;cursor: pointer;`
